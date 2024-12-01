@@ -9,7 +9,7 @@ import (
 	"github.com/tomasff/aoc-2024/days"
 )
 
-func solvePartOne(list1 []int, list2 []int) int {
+func computeListDistance(list1 []int, list2 []int) int {
 	// Ideally, this should not mutate the original input.
 	// For this problem this is ok.
 	slices.Sort(list1)
@@ -30,7 +30,7 @@ func solvePartOne(list1 []int, list2 []int) int {
 	return total
 }
 
-func solvePartTwo(list1 []int, list2 []int) int {
+func computeListSimilarity(list1 []int, list2 []int) int {
 	frequencies := make(map[int]int)
 
 	for _, num := range list2 {
@@ -81,7 +81,7 @@ func SolveDay(inputPath string) days.DaySolution {
 	list1, list2 := loadDayInput(inputPath)
 
 	return days.DaySolution{
-		PartOne: solvePartOne(list1, list2),
-		PartTwo: solvePartTwo(list1, list2),
+		PartOne: computeListDistance(list1, list2),
+		PartTwo: computeListSimilarity(list1, list2),
 	}
 }

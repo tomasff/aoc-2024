@@ -11,29 +11,29 @@ var testList2 = []int{
 	4, 3, 5, 3, 9, 3,
 }
 
-const partOneSolution = 11
-const partTwoSolution = 31
+const trueListDistance = 11
+const trueListSimilarity = 31
 
-func TestPartOne(t *testing.T) {
-	tentativeSolution := solvePartOne(testList1, testList2)
+func TestListDistanceExample(t *testing.T) {
+	tentativeSolution := computeListDistance(testList1, testList2)
 
-	if tentativeSolution != partOneSolution {
+	if tentativeSolution != trueListDistance {
 		t.Fatalf(
-			`Expected part one solution %d, received %d`,
+			`Expected list distance %d, calculated %d.`,
 			tentativeSolution,
-			partOneSolution,
+			trueListDistance,
 		)
 	}
 }
 
-func TestPartTwo(t *testing.T) {
-	tentativeSolution := solvePartTwo(testList1, testList2)
+func TestListSimilarityExample(t *testing.T) {
+	listSimilarity := computeListSimilarity(testList1, testList2)
 
-	if tentativeSolution != partTwoSolution {
+	if listSimilarity != trueListSimilarity {
 		t.Fatalf(
-			`Expected part two solution %d, received %d`,
-			tentativeSolution,
-			partTwoSolution,
+			`Expected similarity score %d, calculated %d.`,
+			listSimilarity,
+			trueListSimilarity,
 		)
 	}
 }
