@@ -10,6 +10,8 @@ import (
 )
 
 func solvePartOne(list1 []int, list2 []int) int {
+	// Ideally, this should not mutate the original input.
+	// For this problem this is ok.
 	slices.Sort(list1)
 	slices.Sort(list2)
 
