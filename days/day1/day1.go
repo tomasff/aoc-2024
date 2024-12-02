@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/tomasff/aoc-2024/days"
+	"github.com/tomasff/aoc-2024/util"
 )
 
 func computeListDistance(list1 []int, list2 []int) int {
@@ -18,13 +19,7 @@ func computeListDistance(list1 []int, list2 []int) int {
 	total := 0
 
 	for i, val1 := range list1 {
-		difference := val1 - list2[i]
-
-		// Note that this isn't always correct because the negative and positive
-		// range represented by an int are not symmetric.
-		difference = max(difference, -difference)
-
-		total += difference
+		total += util.Abs(val1 - list2[i])
 	}
 
 	return total
