@@ -17,7 +17,7 @@ func isReportSafe(report []int) bool {
 	isIncreasing := report[1] > report[0]
 
 	for i := 1; i < len(report); i++ {
-		level_delta := util.Abs(report[i] - report[i-1])
+		levelDelta := util.Abs(report[i] - report[i-1])
 
 		if isIncreasing && report[i] <= report[i-1] {
 			return false
@@ -27,7 +27,7 @@ func isReportSafe(report []int) bool {
 			return false
 		}
 
-		if level_delta > 3 || level_delta < 1 {
+		if levelDelta > 3 || levelDelta < 1 {
 			return false
 		}
 	}
