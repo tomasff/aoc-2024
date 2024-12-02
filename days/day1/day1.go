@@ -41,18 +41,18 @@ func computeListSimilarity(list1 []int, list2 []int) int {
 }
 
 func loadDayInput(inputPath string) ([]int, []int) {
-	input_bytes, err := os.ReadFile(inputPath)
+	inputBytes, err := os.ReadFile(inputPath)
 
 	if err != nil {
 		panic(err)
 	}
 
-	input_lines := strings.Split(string(input_bytes), "\n")
+	inputLines := strings.Split(string(inputBytes), "\n")
 
-	list1 := make([]int, 0, len(input_lines))
-	list2 := make([]int, 0, len(input_lines))
+	list1 := make([]int, 0, len(inputLines))
+	list2 := make([]int, 0, len(inputLines))
 
-	for _, line := range input_lines {
+	for _, line := range inputLines {
 		parts := strings.Split(line, "   ")
 
 		num1, err := strconv.Atoi(parts[0])
