@@ -86,14 +86,11 @@ func countSafeReportsWithDampener(reports [][]int) int {
 
 	// TODO(tomasff): Do it in better than O(n^2).
 	for _, report := range reports {
-		for skipIndex := 0; skipIndex < len(report); skipIndex++ {
-			dampenedReport := make([]int, 0, len(report)-1)
-			dampenedReport = append(
-				dampenedReport, report[:skipIndex]...,
-			)
-			dampenedReport = append(
-				dampenedReport, report[skipIndex+1:]...,
-			)
+		dampenedReport := make([]int, len(report)-1)
+
+		for skipIndex := range report {
+			copy(dampenedReport, report[:skipIndex])
+			copy(dampenedReport[skipIndex:], report[skipIndex+1:])
 
 			if isReportSafe(dampenedReport) {
 				numSafeReports += 1
