@@ -15,33 +15,33 @@ var allOrientations = [][]int{
 	{-1, 1},
 }
 
-func (m *grid) numRows() int {
-	return len(m.source)
+func (grid *grid) numRows() int {
+	return len(grid.source)
 }
 
-func (m *grid) numColumns() int {
-	if m.numRows() == 0 {
+func (grid *grid) numColumns() int {
+	if grid.numRows() == 0 {
 		return 0
 	}
 
-	return len(m.source[0])
+	return len(grid.source[0])
 }
 
-func (m *grid) coordinatesAreValid(row, col int) bool {
-	return row >= 0 && row < m.numRows() && col >= 0 && col < m.numColumns()
+func (grid *grid) coordinatesAreValid(row, col int) bool {
+	return row >= 0 && row < grid.numRows() && col >= 0 && col < grid.numColumns()
 }
 
-func (m *grid) get(row, col int) byte {
-	return m.source[row][col]
+func (grid *grid) get(row, col int) byte {
+	return grid.source[row][col]
 }
 
-func (m *grid) orientedSlice(
+func (grid *grid) orientedSlice(
 	startRow, startCol, rowOrientation, colOrientation, length int,
 ) string {
 	endRow := startRow + rowOrientation*(length-1)
 	endCol := startCol + colOrientation*(length-1)
 
-	if !m.coordinatesAreValid(endRow, endCol) {
+	if !grid.coordinatesAreValid(endRow, endCol) {
 		return ""
 	}
 
@@ -53,7 +53,7 @@ func (m *grid) orientedSlice(
 
 		slice = append(
 			slice,
-			m.get(currentRow, curentCol),
+			grid.get(currentRow, curentCol),
 		)
 	}
 
