@@ -4,18 +4,6 @@ import (
 	"github.com/tomasff/aoc-2024/days"
 )
 
-func isUpdateValid(update []int, rules map[int]set) bool {
-	for i, firstPage := range update {
-		for _, otherPage := range update[i+1:] {
-			if rules[otherPage][firstPage] {
-				return false
-			}
-		}
-	}
-
-	return true
-}
-
 func countPageDependencies(update []int, rules map[int]set) map[int]int {
 	numPagesBefore := make(map[int]int)
 

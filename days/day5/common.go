@@ -75,3 +75,15 @@ func parseInput(inputPath string) (map[int]set, [][]int) {
 
 	return parseOrderingRules(inputParts[0]), parseSafetyManualUpdates(inputParts[1])
 }
+
+func isUpdateValid(update []int, rules map[int]set) bool {
+	for i, firstPage := range update {
+		for _, otherPage := range update[i+1:] {
+			if rules[otherPage][firstPage] {
+				return false
+			}
+		}
+	}
+
+	return true
+}

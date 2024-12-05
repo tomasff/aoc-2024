@@ -20,7 +20,7 @@ var solvers = map[int]DaySolver{
 	2: day2.SolveDay,
 	3: day3.SolveDay,
 	4: day4.SolveDay,
-	5: day5.SolveDay,
+	5: day5.SolveDaySort,
 }
 
 func main() {
