@@ -92,16 +92,14 @@ func isUpdateValid(update []int, rules map[int]set) bool {
 
 func countPageDependencies(update []int, rules map[int]set) map[int]int {
 	numPagesBefore := make(map[int]int)
-	pageExists := make(set)
 
 	for _, page := range update {
 		numPagesBefore[page] = 0
-		pageExists[page] = true
 	}
 
 	for _, page := range update {
 		for pageAfter := range rules[page] {
-			if pageExists[pageAfter] {
+			if _, ok := numPagesBefore[pageAfter]; ok {
 				numPagesBefore[pageAfter]++
 			}
 		}
