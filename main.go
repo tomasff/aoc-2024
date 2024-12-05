@@ -28,8 +28,7 @@ func main() {
 	flag.Parse()
 
 	if *dayInputPath == "" {
-		fmt.Println("Invalid day input file path.")
-		os.Exit(1)
+		*dayInputPath = fmt.Sprintf("input/day%d.txt", *day)
 	}
 
 	daySolver, ok := solvers[*day]
