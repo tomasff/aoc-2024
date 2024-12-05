@@ -115,13 +115,15 @@ func getMiddlePageOfFixedUpdate(update []int, rules map[int]set) int {
 	queue := make([]int, 0, len(update))
 	numPageDependencies := countPageDependencies(update, rules)
 
+	// We only need to find the middle element.
+	numRequiredProcessedPages := len(update)/2 + 1
+
 	for page, count := range numPageDependencies {
-		if count == 0 {
+		if count == 0 && len(queue) < numRequiredProcessedPages {
 			queue = append(queue, page)
 		}
 	}
 
-	middlePageIndex := len(update) / 2
 	numProcessedPages := 0
 
 	for len(queue) > 0 {
@@ -130,7 +132,7 @@ func getMiddlePageOfFixedUpdate(update []int, rules map[int]set) int {
 
 		numProcessedPages++
 
-		if numProcessedPages == middlePageIndex+1 {
+		if numProcessedPages == numRequiredProcessedPages {
 			return currentPage
 		}
 
