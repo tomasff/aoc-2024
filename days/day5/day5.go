@@ -90,7 +90,7 @@ func isUpdateValid(update []int, rules map[int]set) bool {
 	return true
 }
 
-func countPagesBefore(update []int, rules map[int]set) map[int]int {
+func countPageDependencies(update []int, rules map[int]set) map[int]int {
 	numPagesBefore := make(map[int]int)
 	pageExists := make(set)
 
@@ -113,9 +113,9 @@ func countPagesBefore(update []int, rules map[int]set) map[int]int {
 // Finds the correct middle page of an invalid update after it has been fixed.
 func getMiddlePageOfFixedUpdate(update []int, rules map[int]set) int {
 	queue := make([]int, 0, len(update))
-	numPagesBefore := countPagesBefore(update, rules)
+	numPageDependencies := countPageDependencies(update, rules)
 
-	for page, count := range numPagesBefore {
+	for page, count := range numPageDependencies {
 		if count == 0 {
 			queue = append(queue, page)
 		}
@@ -135,12 +135,12 @@ func getMiddlePageOfFixedUpdate(update []int, rules map[int]set) int {
 		}
 
 		for nextPage := range rules[currentPage] {
-			if _, nextPageInUpdate := numPagesBefore[nextPage]; !nextPageInUpdate {
+			if _, nextPageInUpdate := numPageDependencies[nextPage]; !nextPageInUpdate {
 				continue
 			}
 
-			numPagesBefore[nextPage]--
-			if numPagesBefore[nextPage] == 0 {
+			numPageDependencies[nextPage]--
+			if numPageDependencies[nextPage] == 0 {
 				queue = append(queue, nextPage)
 			}
 		}
