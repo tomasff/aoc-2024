@@ -2,8 +2,6 @@ package day5
 
 import (
 	"sort"
-
-	"github.com/tomasff/aoc-2024/days"
 )
 
 func fixUpdate(update []int, rules map[int]set) {
@@ -28,14 +26,4 @@ func sumMiddlePagesSort(updates [][]int, rules map[int]set) (int, int) {
 	}
 
 	return validMiddlePageSum, invalidButFixedMiddlePageSum
-}
-
-func SolveDaySort(inputPath string) days.DaySolution {
-	rules, updates := parseInput(inputPath)
-	validMiddlePageSum, invalidMiddlePageSum := sumMiddlePagesSort(updates, rules)
-
-	return days.DaySolution{
-		PartOne: validMiddlePageSum,
-		PartTwo: invalidMiddlePageSum,
-	}
 }
