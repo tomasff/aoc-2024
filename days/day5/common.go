@@ -30,8 +30,7 @@ func parseOrderingRules(unparsedRules string) map[int]set {
 	for _, unparsedRule := range strings.Split(unparsedRules, "\n") {
 		firstPage, thenPage := parseRule(unparsedRule)
 
-		_, ok := rules[firstPage]
-		if !ok {
+		if _, ok := rules[firstPage]; !ok {
 			rules[firstPage] = make(map[int]bool)
 		}
 
