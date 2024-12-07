@@ -11,6 +11,8 @@ import (
 	"github.com/tomasff/aoc-2024/days/day3"
 	"github.com/tomasff/aoc-2024/days/day4"
 	"github.com/tomasff/aoc-2024/days/day5"
+	"github.com/tomasff/aoc-2024/days/day6"
+	"github.com/tomasff/aoc-2024/days/day7"
 )
 
 type DaySolver func(string) days.DaySolution
@@ -21,6 +23,8 @@ var solvers = map[int]DaySolver{
 	3: day3.SolveDay,
 	4: day4.SolveDay,
 	5: day5.SolveDaySort,
+	6: day6.SolveDay,
+	7: day7.SolveDay,
 }
 
 func main() {
