@@ -126,15 +126,14 @@ func simulateGuardPath(guardMap [][]byte, guardPosition vector) []move {
 	hasVisited := make(map[vector]bool)
 	visited := make([]move, 0)
 
-	simulateGuard(
-		guardMap, guardPosition, vector{-1, 0}, func(position, orientation vector) bool {
-			if !hasVisited[position] {
-				visited = append(visited, move{position, orientation})
-			}
-			hasVisited[position] = true
+	simulateGuard(guardMap, guardPosition, vector{-1, 0}, func(position, orientation vector) bool {
+		if !hasVisited[position] {
+			visited = append(visited, move{position, orientation})
+		}
+		hasVisited[position] = true
 
-			return true
-		})
+		return true
+	})
 
 	return visited
 }
@@ -142,21 +141,20 @@ func simulateGuardPath(guardMap [][]byte, guardPosition vector) []move {
 func guardLoops(guardMap [][]byte, startPosition vector, orientation vector) bool {
 	seen := make(map[move]bool)
 
-	return !simulateGuard(
-		guardMap, startPosition, orientation, func(position, orientation vector) bool {
-			positionForward := position.add(orientation)
+	return !simulateGuard(guardMap, startPosition, orientation, func(position, orientation vector) bool {
+		positionForward := position.add(orientation)
 
-			if getEntity(guardMap, positionForward) == obstacle {
-				currentMove := move{positionForward, orientation}
-				if seen[currentMove] {
-					return false
-				}
-
-				seen[currentMove] = true
+		if getEntity(guardMap, positionForward) == obstacle {
+			currentMove := move{positionForward, orientation}
+			if seen[currentMove] {
+				return false
 			}
 
-			return true
-		})
+			seen[currentMove] = true
+		}
+
+		return true
+	})
 }
 
 // TODO(tomasff): A bit overengineered, refactor later.
