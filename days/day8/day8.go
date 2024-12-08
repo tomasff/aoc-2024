@@ -58,7 +58,10 @@ func parseAntennas(inputPath string) ([]antenna, int, int) {
 }
 
 func isValidLocation(location vector, maximumX, maximumY int) bool {
-	return location.x >= 0 && location.x < maximumX && location.y >= 0 && location.y < maximumY
+	return location.x >= 0 &&
+		location.x < maximumX &&
+		location.y >= 0 &&
+		location.y < maximumY
 }
 
 func countAntinodes(
