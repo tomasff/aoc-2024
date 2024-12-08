@@ -7,9 +7,11 @@ import (
 	"github.com/tomasff/aoc-2024/days"
 )
 
-const guard = '^'
-const obstacle = '#'
-const outsideMap = '!'
+const (
+	guard      = '^'
+	obstacle   = '#'
+	outsideMap = '!'
+)
 
 type move struct {
 	position    vector
